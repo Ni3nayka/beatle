@@ -1,4 +1,5 @@
 #include "azbuka.h"
+#include "data.h"
 
 const int out_device_pin = 13;
 const int in_device_pin = 12;
@@ -33,15 +34,15 @@ void play_symbol(char a) {
   }
 }
 
-void play_line(String a) {
-  for (int i = 0; a[i]!=0; i+=1) { 
+void play_line(String a, int d=1) {
+  for (int i = d-1; a[i]!=0; i+=d) { 
     //Serial.println(a[i]);
     play_symbol(a[i]);
+    if (!digitalRead(in_device_pin)) {
+      while (!digitalRead(in_device_pin)) delay(10);
+      break;
+    }
   }
-}
-
-void find_answer(String request) {
-  
 }
 
 void setup() {
@@ -75,8 +76,9 @@ void loop() {
     word_buffer = 0;
   }
   if (millis()-time_2>delay_input_enter_trigger && line_buffer!="") {
-    find_answer(line_buffer);
-    play_line(line_buffer);
+    //find_answer(line_buffer);
+    //play_line(line_buffer);
+    play_line(find_answer(line_buffer),2);
     line_buffer = "";
   }
 }

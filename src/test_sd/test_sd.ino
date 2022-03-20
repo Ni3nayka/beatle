@@ -68,11 +68,10 @@ void setup() {
     if (myFile) {
         // считываем все байты из файла и выводим их в COM-порт
         while (myFile.available()) {
-            char f = myFile.read();
-            if (f=='Е') Serial.print("!");
-            F = f;
-            play_symbol(f);
-            Serial.print(f);
+            if (String(myFile.read())==String('Е')) Serial.print("!");
+            //F = f;
+            //play_symbol(f);
+            //Serial.print(f);
         }
         // закрываем файл
         myFile.close();

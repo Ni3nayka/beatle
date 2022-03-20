@@ -1,7 +1,7 @@
 const int delay_play_tochka = 100;
 const int delay_play_tire = 500;
 const int delay_play_in_word = 170;
-const int delay_play_between_word = 400;
+const int delay_play_between_word = 500;
 
 const int delay_input_tochka_tire_trigger = 200;
 const int delay_input_in_between_word_trigger = 500;
@@ -68,7 +68,7 @@ const int azbuka_size = 58;
   "=---.-",
   "*-..--",
 };*/
-String azbuka = "АБВГДЕЖЗИйКЛМНОПРСТУфХЦЧШЩЪЫЬЭЮЯ1234567890().,|!;:-'^~+=*/";
+String azbuka = "АБВГДЕЖЗИЙКЛМНОПРСТУфХЦЧШЩЪЫЬЭЮЯ1234567890().,|!;:-'^~+=*/";
 //char azbuka[azbuka_size] = "АБВГДЕЖЗИйКЛМНОПРСТУфХЦЧШЩЪЫЬЭЮЯ1234567890().,|!;:-'^~+=*";
 int azbuka_morze[azbuka_size] {
   0b0000000000010010, // А
