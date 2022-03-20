@@ -1,3 +1,8 @@
+const int delay_play_tochka = 100;
+const int delay_play_tire = 500;
+const int delay_play_in_word = 100;
+const int delay_play_between_word = 500;
+
 const int azbuka_size = 66;
 String azbuka[azbuka_size] {
   "A.-",

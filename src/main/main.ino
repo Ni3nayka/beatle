@@ -41,7 +41,7 @@ void loop() {
    delay(probel_2);
 }*/
 
-void S_tochka() {
+/*void S_tochka() {
   tone(spiker, sound); delay(tochka);
   noTone(spiker); delay(probel);
 }
@@ -49,4 +49,20 @@ void S_tochka() {
 void S_tire() {
   tone(spiker, sound); delay(tire);
   noTone(spiker); delay(probel);
+}*/
+
+void play_symbol(char a) {
+  for (int i = 0; i < azbuka_size; i++) {
+    if (a==azbuka[i][0]) {
+      for (int u; azbuka[i][u]!=0; u++) {
+        digitalWrite(13, 1);
+        if (azbuka[i][u]=='.') delay(delay_play_tochka);
+        else delay(delay_play_tire);
+        digitalWrite(13, 0);
+        delay(delay_play_in_word);
+      }
+      delay(delay_play_between_word);
+      return;
+    }
+  }
 }
