@@ -1,9 +1,9 @@
 const int delay_play_tochka = 100;
 const int delay_play_tire = 500;
-const int delay_play_in_word = 100;
-const int delay_play_between_word = 500;
+const int delay_play_in_word = 170;
+const int delay_play_between_word = 400;
 
-const int delay_input_tochka_tire_trigger = 100;
+const int delay_input_tochka_tire_trigger = 200;
 const int delay_input_in_between_word_trigger = 500;
 const int delay_input_enter_trigger = 2000;
 

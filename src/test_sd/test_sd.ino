@@ -2,7 +2,6 @@
 
 #include "azbuka.h"
 
-//#include <SPI.h>
 #include <SD.h>
 
 const int chipSelect = 10;
@@ -70,8 +69,9 @@ void setup() {
         // считываем все байты из файла и выводим их в COM-порт
         while (myFile.available()) {
             char f = myFile.read();
-            if (f!=F) Serial.print("!");
+            if (f=='Е') Serial.print("!");
             F = f;
+            play_symbol(f);
             Serial.print(f);
         }
         // закрываем файл
