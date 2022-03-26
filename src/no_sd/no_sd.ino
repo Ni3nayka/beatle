@@ -1,8 +1,8 @@
 #include "azbuka.h"
 #include "data.h"
 
-const int out_device_pin = 13;
-const int in_device_pin = 12;
+const int out_device_pin = 3;
+const int in_device_pin = 8;
 
 unsigned long int time_1 = 0;
 unsigned long int time_2 = 0;
@@ -81,4 +81,5 @@ void loop() {
     play_line(find_answer(line_buffer),2);
     line_buffer = "";
   }
+  Serial.println(digitalRead(in_device_pin));
 }
