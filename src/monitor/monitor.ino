@@ -1,3 +1,9 @@
+/*
+ * https://www.arduino.cc/reference/en/language/variables/utilities/progmem/
+ * https://alexgyver.ru/lessons/progmem/
+ * https://kit.alexgyver.ru/tutorials/oled/
+ */
+
 #include <GyverOLED.h>
 GyverOLED<SSD1306_128x32, OLED_NO_BUFFER> oled;
 
@@ -8,7 +14,7 @@ const int button_pin[3] = {4,3,2};
 bool sleep = 0; // 0 - work, 1 - sleep
 int list = 1; // отображаемая страница
 unsigned long int time = 0; // для автоотключения экрана
-#define time_sleep 10000 // время для ухода в сон
+#define time_sleep 30000 // время для ухода в сон
 
 void setup() {
   Serial.begin(9600);
@@ -18,7 +24,7 @@ void setup() {
   // display
   oled.init();        // инициализация
   
-  oled.clear();       // очистка
+  /*oled.clear();       // очистка
   oled.setScale(3);   // масштаб текста (1..4)
   oled.home();        // курсор в 0,0
   oled.print("П");
@@ -34,7 +40,7 @@ void setup() {
   oled.print("т");
   delay(100);
   oled.print("!");
-  delay(500);
+  delay(500);*/
   
   print_display(1);
   
@@ -60,7 +66,7 @@ void controller() {
   if (b1+b2+b3>1 || b2) {  // отключение экрана
     oled.clear();
     sleep = 1;
-    delay(3000);
+    delay(1000);
   }
   else if (b1+b2+b3==1) {
     time = millis();
@@ -69,16 +75,24 @@ void controller() {
       print_display(list);
     }
     else {
+      Serial.print(list);
       if (b3) {
         list++;
-        if (list>=size_text) 
+        Serial.print(list);
+        if (list>=size_text) {
           list = 1;
+        }
       }
       else if (b1) {
         list--;
-        if (list<=0)
+        Serial.print(list);
+        if (list<=0) {
           list = size_text-1;
+        }
       }
+      Serial.println(list);
+      Serial.println(size_text); // ПОЧЕМУ ТО РАБОАЕТ ТОЛЬКО С ЭТОЙ И СЛЕДУЮЩЕЙ СТРОКОЙ, ИНАЧЕ ПЕРЕПОЛНЕНИЕ
+      Serial.println(size_text-1);
       print_display(list);
     }
     delay(100);
